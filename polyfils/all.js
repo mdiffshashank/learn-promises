@@ -13,6 +13,8 @@ function all(promises) {
     let count = promises.length;
 
     promises.forEach((promise, index) => {
+      //For each promise, it calls Promise.resolve to ensure non-promise values
+      //(if present) are handled correctly.
       Promise.resolve(promise)
         .then((result) => {
           output[index] = result;
@@ -31,6 +33,10 @@ const p1 = new Promise((resolve) => setTimeout(resolve, 2000, 2));
 const p2 = Promise.resolve(4);
 const p3 = 5;
 
-all([p1, p2, p3]).then((result) => {
-  console.log(result);
-});
+all([p1, p2, p3])
+  .then((result) => {
+    console.log(result);
+  })
+  .catch((err) => {
+    console.log(err.message);
+  });

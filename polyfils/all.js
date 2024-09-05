@@ -1,12 +1,3 @@
-//polyfil for promise.all
-
-/**
- * - takes array of promises as parameter
- * - returns a promise.
- * - if any promise failed reject all
- * - return promises in array
- */
-
 function all(promises) {
   return new Promise((resolve, reject) => {
     let output = Array.from({ length: promises.length });
@@ -18,13 +9,11 @@ function all(promises) {
       Promise.resolve(promise)
         .then((result) => {
           output[index] = result;
-          console.log(result);
+          // console.log(result);
           count--;
           if (count === 0) resolve(output);
         })
-        .catch((err) => {
-          reject(err);
-        });
+        .catch(reject);
     });
   });
 }

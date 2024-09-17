@@ -24,3 +24,7 @@ const allSettled = function (promises) {
     });
   });
 };
+
+/**
+ * TIP : finally block is important
+ */

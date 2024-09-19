@@ -1,10 +1,16 @@
+/**
+ * finally block is important, set value even in catch
+ */
+
 const allSettled = function (promises) {
   return new Promise((resolve, reject) => {
     if (!Array.isArray(promises)) {
       return reject(new TypeError("Input must be an array"));
     }
 
-    let results = [];
+    let results = Array.from({ length: promises.length }).fill({
+      status: "pending",
+    });
     let settledCount = 0;
 
     promises.forEach((promise, index) => {

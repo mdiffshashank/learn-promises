@@ -1,3 +1,8 @@
+/**
+ * one failes all failes
+ * forEach promises and set response in there index don't push
+ */
+
 function all(promises) {
   return new Promise((resolve, reject) => {
     let output = Array.from({ length: promises.length });
@@ -13,7 +18,9 @@ function all(promises) {
           count--;
           if (count === 0) resolve(output);
         })
-        .catch(reject);
+        .catch((err) => {
+          console.log(err);
+        });
     });
   });
 }
@@ -21,6 +28,7 @@ function all(promises) {
 const p1 = new Promise((resolve) => setTimeout(resolve, 2000, 2));
 const p2 = Promise.resolve(4);
 const p3 = 5;
+// const p4 = Promise.reject("Error !");
 
 all([p1, p2, p3])
   .then((result) => {

@@ -7,8 +7,18 @@
  */
 const promise1 = new Promise((resolve, reject) => {
   setTimeout(resolve, 100, 2);
+  resolve(55);
+  console.log("promise 1");
 });
 
 promise1.then((response) => {
   console.log("promise1", response);
 });
+
+console.log("end");
+
+/**
+ * promise 1
+ * end
+ * promise1 55
+ */

@@ -14,3 +14,13 @@ async function fetchData() {
 fetchData();
 
 console.log("end"); // this will be executed before await executes
+
+//what is the order of console logs ?
+
+/**
+ * start
+ * promise 1
+ * promise 2
+ * end
+ * 2
+ */

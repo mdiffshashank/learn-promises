@@ -36,9 +36,9 @@ function any(promises) {
 //   AggregateError.prototype.constructor = AggregateError;
 // }
 
-const p1 = new Promise((resolve, reject) => setTimeout(reject, 2000, 2));
-const p2 = Promise.reject(4);
-const p3 = Promise.reject(5);
+const p1 = new Promise((resolve, reject) => setTimeout(resolve, 2000, 2));
+const p2 = Promise.resolve(4);
+const p3 = Promise.resolve(5);
 
 any([p1, p2, p3])
   .then((result) => {
